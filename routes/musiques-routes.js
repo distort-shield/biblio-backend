@@ -6,7 +6,7 @@ const musicController = require("../controller/musique-controller");
 
 //chemin racine : /api/musiques
 
-router.get("/", musicController.getMusiques); // afficher musique
+router.get("/", musicController.getMusique); // afficher musique
 router.get("/:musiqueId", musicController.getMusiqueById); // musique par id
 router.post("/", musicController.nouvelleMusique); // ajouter une musique
 router.patch("/:musiqueId", musicController.updateMusique); // mise à jour musique

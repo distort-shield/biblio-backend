@@ -3,8 +3,7 @@ const express = require("express");
 const { v4: uuidv4 } = require('uuid');
 const app = express();
 app.use(express.urlencoded({ extended: false }));
-
-
+const Musique = require("./models/musique")
 
 
 let MUSIQUES = [
@@ -69,8 +68,8 @@ let MUSIQUES = [
     },
   ];
 
-  const getMusiques = (req, res, next) => { // afficher musique
-      res.json({MUSIQUES})
+  const getMusique = (req, res, next) => { // afficher musique
+      res.json({Musique})
   }
 
   const getMusiqueById = (req, res, next) => { // afficher musique par id
@@ -82,7 +81,7 @@ let MUSIQUES = [
         if (!musique) {
           return res
             .status(404)
-            .json({ message: "Musique non trouvée pour cette piste" });
+            .json({ message: " non trouvée pour cette piste" });
         }
       
         res.json({ musique });
@@ -127,11 +126,11 @@ const updateMusique =  (req, res, next) => { // patch égale mise à jour. contr
 
 const deleteMusique = (req, res, next) => { // suprr une musique
             const musiqueId = req.params.musiqueId;
-            MUSIQUES = MUSIQUES.filter(m => m.id !== musiqueId);
+            Musique = MUSIQUES.filter(m => m.id !== musiqueId);
             res.status(200).json({message: "Musique supprimé"})}
 
 
-  exports.getMusiques = getMusiques;
+  exports.getMusique = getMusique;
   exports.getMusiqueById = getMusiqueById;
   exports.nouvelleMusique = nouvelleMusique;
   exports.updateMusique = updateMusique;

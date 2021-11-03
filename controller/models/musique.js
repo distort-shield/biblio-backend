@@ -10,4 +10,4 @@ const musiqueShema = new Schema({ // définition de ma classe pour la base de do
 }); 
 
 
-module.exports = mongoose('Musique', musiqueShema);
+module.exports = mongoose.model('Musique', musiqueShema);
