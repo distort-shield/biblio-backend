@@ -68,8 +68,17 @@ let MUSIQUES = [
     },
   ];
 
-  const getMusique = (req, res, next) => { // afficher musique
-      res.json({Musique})
+  const getMusique = async (req, res, next) => { // afficher musique
+
+    let musiques 
+    try {
+      musiques = await Musique.find();
+    } catch (err) {
+      console.log(err);
+      res.status(404).json({message: "Error Music Not Found"})
+      
+    }
+      res.json({ musiques })
   }
 
   const getMusiqueById = (req, res, next) => { // afficher musique par id
